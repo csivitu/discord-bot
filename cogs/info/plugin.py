@@ -39,7 +39,8 @@ class Info(Plugin):
 
     @commands.command(name="count", help="Returns member count.")
     async def membercount(self, ctx: Context) -> None:
-        await ctx.send(f"Members: {ctx.guild.member_count}")
+        human_users = sum(1 for member in ctx.guild.members if not member.bot)
+        await ctx.send(f"Members: {human_users}")
 
 
 async def setup(bot: Bot) -> None:
