@@ -13,21 +13,21 @@ class Reaction(Plugin):
             embed=Embed(title="Forkthis", description="React to the message with 👍")
         )
 
-        def check(reaction: Reaction, user: User) -> bool:
-            return str(reaction.emoji) == "👍"
+        def check(reaction: Reaction, user) -> bool:
+            return reaction.message == m and str(reaction.emoji) == "👍" and user == ctx.author
 
-        m.add_reaction("👍")
+        await m.add_reaction("👍")
         try:
             reaction, user = await self.bot.wait_for(
-                "message", timeout=60.0, check=check
+                "reaction_add", timeout=60.0, check=check
             )
         except TimeoutError:
-            await m.edit("You took too long")
+            await m.edit(content="You took too long", suppress=True)
         else:
             if str(reaction.emoji) == "👍":
-                await m.edit("You Reacted to the message")
+                await m.edit(content="You Reacted to the message", suppress=True)
             else:
-                await m.edit("Wrong Reaction")
+                await m.edit(content="Wrong Reaction", suppress=True)
 
 
 async def setup(bot: Bot) -> None:
