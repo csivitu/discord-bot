@@ -6,7 +6,7 @@ from discord.utils import setup_logging
 from core import Bot
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path)
+load_dotenv()
 
 
 token = os.environ.get("TOKEN")
