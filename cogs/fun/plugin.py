@@ -11,7 +11,7 @@ class Fun(Plugin):
     async def _(self, ctx: Context) -> None:
         emojis: list[str] = ["sob", "grinning", "skull", "eagle", "goat", "sunglasses"]
         emoji: str = choice(emojis)
-        await ctx.reply(f":{emoji}:")
+        await ctx.reply(emoji)
 
 
 async def setup(bot: Bot) -> None:
