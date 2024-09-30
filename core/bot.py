@@ -42,7 +42,7 @@ class Bot(commands.Bot):
         for file in os.listdir("./core"):
             if not file.startswith("_"):
                 try:
-                    await self.load_extension(f"cogs.{file}.plugin")
+                    await self.load_extension(f"core.{file}.plugin")
                 except Exception as e:
                     log.info(f"Couldn't load {file}\n{e}")
 
