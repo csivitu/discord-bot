@@ -10,7 +10,7 @@ class Info(Plugin):
     @commands.command(name="info", description="Info of a server member")
     async def info(self, ctx: Context, member: Member = None) -> None:
         #
-        roles: list[Role] = [role for role in member.all_roles[1:]]
+        roles: list[Role] = [role for role in member.roles]
         embed: Embed = Embed(
             colour=member.color,
             timestamp=datetime.now(timezone.utc),
