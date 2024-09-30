@@ -9,7 +9,8 @@ from datetime import datetime, timezone
 class Info(Plugin):
     @commands.command(name="info", description="Info of a server member")
     async def info(self, ctx: Context, member: User = None) -> None:
-        #
+        if member is None:
+            member = ctx.author
         roles: list[Role] = [role for role in member.all_roles[1:]]
         embed: Embed = Embed(
             colour=member.color,
