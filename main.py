@@ -15,6 +15,7 @@ token = os.environ.get("TOKEN")
 async def main() -> None:
     setup_logging()
     async with Bot() as bot:
+        
         await bot.start(token=token, reconnect=True)
 
 

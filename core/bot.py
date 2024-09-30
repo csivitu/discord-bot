@@ -39,7 +39,7 @@ class Bot(commands.Bot):
 
     async def setup_hook(self) -> None:
         log.info("Running setup...")
-        for file in os.listdir("./core"):
+        for file in os.listdir(os.path.join(os.getcwd(), 'cogs')):
             if not file.startswith("_"):
                 try:
                     await self.load_extension(f"cogs.{file}.plugin")
