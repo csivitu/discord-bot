@@ -1,4 +1,4 @@
-from discord import Embed, User, Role
+from discord import Embed, Member, Role
 from discord.ext import commands
 from cogs import Plugin
 from core import Bot
@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 
 class Info(Plugin):
     @commands.command(name="info", description="Info of a server member")
-    async def info(self, ctx: Context, member: User = None) -> None:
+    async def info(self, ctx: Context, member: Member = None) -> None:
         #
         roles: list[Role] = [role for role in member.all_roles[1:]]
         embed: Embed = Embed(
@@ -21,12 +21,12 @@ class Info(Plugin):
         embed.add_field(name="Display Name:", value=member.display_name, inline=True)
         embed.add_field(
             name="Account Created:",
-            value=f"<t:{int(datetime.timestamp(datetime.now(timezone.utc)))}:R>",
+            value=f"<t:{int(member.created_at.timestamp())}:R>",
             inline=True,
         )
         embed.add_field(
             name="Server Joined:",
-            value=f"<t:{int(datetime.timestamp(datetime.now(timezone.utc)))}:R>",
+            value=f"<t:{int(member.joined_at.timestamp()}:R>",
             inline=True,
         )
         embed.add_field(
