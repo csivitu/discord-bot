@@ -33,7 +33,7 @@ class Info(Plugin):
             name="Roles:", value=",".join([role.mention for role in roles]), inline=True
         )
         embed.add_field(
-            name="Highest Role:", value=f"{member.highest_role.mention}", inline=True
+            name="Highest Role:", value=f"{member.top_role.mention}", inline=True
         )
         await ctx.send(embed=embed)
 
