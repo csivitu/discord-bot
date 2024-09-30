@@ -26,7 +26,7 @@ class Info(Plugin):
         )
         embed.add_field(
             name="Server Joined:",
-            value=f"<t:{int(member.joined_at.timestamp()}:R>",
+            value=f"<t:{int(member.joined_at.timestamp())}:R>",
             inline=True,
         )
         embed.add_field(
